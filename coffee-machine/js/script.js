@@ -52,7 +52,7 @@ let money = document.getElementById("money");
       coffe_mug.onclick = function(){
         if (this.style.opacity!=0){
           this.style.opacity = 0;
-          let audio = new Audio("audio/09024.mp3");
+          let audio = new Audio("audio/pyt_coffee.mp3");
           audio.play();
         }
       }

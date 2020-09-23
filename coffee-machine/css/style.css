@@ -5,7 +5,7 @@
       font-weight: normal;
       }
       body{
-        background: url(img/background-coffee-beans-and-cups.jpg);
+        background: url("img/cmb.jpg");
       }
       .container.rounded{
         background: rgb(139, 69, 19, .5);
