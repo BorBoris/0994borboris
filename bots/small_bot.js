@@ -11,8 +11,8 @@
 let yandexInput = document.getElementsByClassName("input__control input__input mini-suggest__input")[0];
 let nextPage = document.getElementsByTagName('a');
 let tekPage = document.getElementsByTagName('span');
-//let keywords = ["Гобой","Саксофон","Валторна","Фагот","Скрипка","Флейта","Как звучит флейта"];
-let keywords = ["Остракизм", "Вампиризм"];
+let keywords = ["Гобой","Саксофон","Валторна","Фагот","Скрипка","Флейта","Как звучит флейта"];
+//let keywords = ["Остракизм", "Вампиризм"];
 let keyword = keywords[getRandom(0,keywords.length)];
 let i = 0;
 
