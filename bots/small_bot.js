@@ -10,9 +10,9 @@
 
 let yandexInput = document.getElementsByClassName("input__control input__input mini-suggest__input")[0];
 let nextPage = document.getElementsByTagName('a');
-let tekPage = document.getElementsByClassName("pager__item pager__item_current_yes pager__item_kind_page");
-let keywords = ["Гобой","Саксофон","Валторна","Фагот","Скрипка","Флейта","Как звучит флейта"];
-//let keywords = ["Гобой"];
+let tekPage = document.getElementsByTagName('span');
+//let keywords = ["Гобой","Саксофон","Валторна","Фагот","Скрипка","Флейта","Как звучит флейта"];
+let keywords = ["Остракизм", "Вампиризм"];
 let keyword = keywords[getRandom(0,keywords.length)];
 let i = 0;
 
@@ -31,19 +31,26 @@ if (yandexInput!=undefined){
 }else{
     let links = document.links;
     let flag = true;
-    let tekPage = document.getElementsByClassName("pager__item pager__item_current_yes pager__item_kind_page");
-    let numPages = document.getElementsByClassName("link link_theme_none link_target_serp pager__item pager__item_kind_page i-bem");
-    let numPageNext = document.getElementsByClassName("link link_theme_none link_target_serp pager__item pager__item_kind_next i-bem");
 
     for(let i=0; i<links.length; i++){
-        links[i].removeAttribute('target');
-        console.log(i);
+        //links[i].removeAttribute('target');
+        links[i].setAttribute('target', '_self');
+        console.log("link "+i);
         if(links[i].href.indexOf("https://xn----7sbab5aqcbiddtdj1e1g.xn--p1ai") != -1){
             setTimeout(()=>links[i].click(),2000);
             flag=false;
             break;
         }
     }
+
+    for(let i = 0;i<tekPage.length;i++){
+        tekPage[i].getAttribute('aria-label');
+        if(tekPage[i].getAttribute('aria-label')=="Текущая страница 3"){
+           location.href = "https://yandex.ru/";
+        }
+     }
+
+//Переходы по страницам начало
     function pageLoad(){
         for(let i = 0;i<nextPage.length;i++){
             if(nextPage[i].getAttribute('aria-label')=="Следующая страница"){
@@ -51,7 +58,7 @@ if (yandexInput!=undefined){
             }
         }
      }
-
-//   if(tekPage.getAttribute('aria-label')=="Текущая страница 10") location.href = "https://yandex.ru/";
     if(flag) setTimeout(()=>pageLoad(),2000);
+//Переходы по страницам конец
+
 }
