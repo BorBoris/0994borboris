@@ -11,6 +11,7 @@
 // ==/UserScript==
 
 let yandexInput = document.getElementsByClassName("input__control input__input mini-suggest__input")[0];
+let yandexSearch = document.getElementsByClassName("button mini-suggest__button button_theme_websearch button_size_ws-head i-bem button_js_inited")[0];
 let nextPage = document.getElementsByTagName('a');
 let tekPage = document.getElementsByTagName('span');
 let sites = {
@@ -32,19 +33,19 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-if (yandexInput!=undefined){ // Если мы на главной странице Yandex
-    site = "site" + site;
+if (yandexSearch!=undefined){ // Если мы на главной странице Yandex
+    document.site = '"site=" + site';
 }else{ // Если уже не на главной странице Yandex
     site = getCookie("site");
 }
 
 
-if (yandexInput!=undefined){
+if (yandexSearch!=undefined){
     let timerId = setInterval(()=>{
         yandexInput.value += keyword[i++];
         if (i==keyword.length){
             clearInterval(timerId);
-            document.getElementsByClassName("button mini-suggest__button button_theme_websearch button_size_ws-head i-bem button_js_inited")[0].click();
+            yandexSearch.click();
         }
     },500);
 }else if (location.hostname == "yandex.ru"){
