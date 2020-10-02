@@ -10,10 +10,9 @@
 // @grant        none
 // ==/UserScript==
 
-//let googleInput = document.getElementsByName("q")[0];
 let yandexInput = document.getElementsByClassName("input__control input__input mini-suggest__input")[0];
-//let btnK = document.getElementsByName("btnK")[0];
 let nextPage = document.getElementsByTagName('a');
+let tekPage = document.getElementsByTagName('span');
 let sites = {
     "xn----7sbab5aqcbiddtdj1e1g.xn--p1ai":["Гобой","Саксофон","Валторна","Фагот","Скрипка","Флейта","Как звучит флейта"],
     "crushdrummers.ru":["Барабанное шоу","Шоу барабанщиков в Москве","Заказать барабанщиков в Москве"]
@@ -34,6 +33,7 @@ function getCookie(name) {
 }
 
 if (yandexInput!=undefined){ // Если мы на главной странице Yandex
+    site = "site" + site;
 }else{ // Если уже не на главной странице Yandex
     site = getCookie("site");
 }
@@ -51,7 +51,6 @@ if (yandexInput!=undefined){
     let links = document.links;
     let flag = true;
     for(let i=0; i<links.length; i++){
-        //links[i].removeAttribute('target');
         links[i].setAttribute('target', '_self');
         if(links[i].href.indexOf(site) != -1){
             setTimeout(()=>links[i].click(),2000);
@@ -59,6 +58,14 @@ if (yandexInput!=undefined){
             break;
         }
     }
+
+    for(let i = 0;i<tekPage.length;i++){
+      tekPage[i].getAttribute('aria-label');
+      if(tekPage[i].getAttribute('aria-label')=="Текущая страница 3"){
+        location.href = "https://yandex.ru/";
+      }
+    }
+
     function pageLoad(){
         for(let i = 0;i<nextPage.length;i++){
             if(nextPage[i].getAttribute('aria-label')=="Следующая страница"){
