@@ -34,7 +34,7 @@ function getCookie(name) {
 }
 
 if (yandexSearch!=undefined){ // Если мы на главной странице Yandex
-    document.site = '"site=" + site';
+    document.cookie = "site=" + site;
 }else{ // Если уже не на главной странице Yandex
     site = getCookie("site");
 }
