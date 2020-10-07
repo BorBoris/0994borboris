@@ -6,10 +6,6 @@ class Person{
   private $age;
   private $mother;
   private $father;
-  private $mommother;
-  private $momfather;
-  private $dadmother;
-  private $dadfather;
   
   function __construct($name,$lastname,$age,$mother=null,$father=null,$mommother=null,$momfather=null,$dadmother=null,$dadfather=null){
     $this->name = $name;
@@ -20,7 +16,7 @@ class Person{
     $this->mommother = $mommother;
     $this->momfather = $momfather;
     $this->dadmother = $dadmother;
-    $this->dadmother = $dadmother;
+    $this->dadfather = $dadfather;
   }
 
 	public function getName(){return $this->name;}
@@ -32,7 +28,6 @@ class Person{
 	public function getMomfather(){return $this->momfather;}
 	public function getDadmother(){return $this->dadmother;}
 	public function getDadfather(){return $this->dadfather;}
-	public function getDadfathername(){return $dadfather->name;}
     public function getInfo(){
 	  return "
 	    Меня зовут: ".$this->name."<br>
