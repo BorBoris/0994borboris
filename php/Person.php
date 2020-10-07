@@ -13,10 +13,6 @@ class Person{
     $this->age = $age;
     $this->mother = $mother;
     $this->father = $father;
-    $this->mommother = $mommother;
-    $this->momfather = $momfather;
-    $this->dadmother = $dadmother;
-    $this->dadfather = $dadfather;
   }
 
 	public function getName(){return $this->name;}
@@ -24,30 +20,27 @@ class Person{
 	public function getAge(){return $this->age;}
 	public function getMother(){return $this->mother;}
 	public function getFather(){return $this->father;}
-	public function getMommother(){return $this->mommother;}
-	public function getMomfather(){return $this->momfather;}
-	public function getDadmother(){return $this->dadmother;}
-	public function getDadfather(){return $this->dadfather;}
+
     public function getInfo(){
 	  return "
 	    Меня зовут: ".$this->name."<br>
-	    Мою маму зовут: ".$this->mother->name."<br>
-	    Моего папу зовут: ".$this->father->name."<br>
-	    Мамину маму зовут: ".$this->mommother->name."<br>
-	    Маминого папу зовут: ".$this->momfather->name."<br>
-	    Папину маму зовут: ".$this->dadmother->name."<br>
-	    Папиного папу зовут: ".$this->dadfather->name;
+	    Мою маму зовут: ".$this->getMother()->getName()."<br>
+	    Моего папу зовут: ".$this->getFather()->getName()."<br>
+	    Мамину маму зовут: ".$this->getMother()->getMother()->getName()."<br>
+	    Маминого папу зовут: ".$this->getFather()->getFather()->getName()."<br>
+	    Папину маму зовут: ".$this->getMother()->getMother()->getName()."<br>
+	    Папиного папу зовут: ".$this->getFather()->getFather()->getName();
 	    
 	}
 	
 }
 
-$maria = new Person("Мария","Петрова",null,null,null,null,null,null);
-$ivan = new Person("Иван","Петров",null,null,null,null,null,null);
-$svetlana = new Person("Светлана","Ильина",null,null,null,null,null,null);
-$petr = new Person("Петр","Ильин",null,null,null,null,null,null);
-$oleg = new Person("Олег","Петров",41,$maria,$ivan,null,null,null,null);
-$olga = new Person("Ольга","Петрова",41,$svetlana,$petr,null,null,null,null);
+$maria = new Person("Мария","Петрова",65);
+$ivan = new Person("Иван","Петров",66);
+$svetlana = new Person("Светлана","Ильина",64);
+$petr = new Person("Петр","Ильин",67);
+$oleg = new Person("Олег","Петров",41,$maria,$ivan);
+$olga = new Person("Ольга","Петрова",41,$svetlana,$petr);
 $igor = new Person("Игорь","Петров",12,$olga,$oleg,$maria,$ivan,$svetlana,$petr);
 echo $igor->getInfo();
 ?>
