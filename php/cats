@@ -1,0 +1,31 @@
+<?
+class Cat {
+    public $age;
+    public $weight;
+    public $strength;
+
+    function __construct() {
+    }
+
+    function fight($anotherCat) {
+        
+        global $result;
+        $agePlus = ($this->age > $anotherCat->age ? 1 : 0);
+        $weightPlus = ($this->weight > $anotherCat->weight ? 1 : 0);
+        $strengthPlus = ($this->strength > $anotherCat->strength ? 1 : 0);
+        $count = $agePlus + $weightPlus + $strengthPlus;
+        return $result = ($count>=2 ? 1 : 0);
+    }
+}
+
+$Cat1 = new Cat();
+$Cat1->age=3;
+$Cat1->weight=6;
+$Cat1->strength=10;
+$Cat2 = new Cat();
+$Cat2->age=4;
+$Cat2->weight=5;
+$Cat2->strength=8;
+$Cat1->fight($Cat2);
+echo $result ? "Cat1 win!":"Cat2 win!";
+?>
