@@ -10,11 +10,22 @@ class Cat {
     function fight($anotherCat) {
         
         global $result;
-        $agePlus = ($this->age > $anotherCat->age ? 1 : 0);
-        $weightPlus = ($this->weight > $anotherCat->weight ? 1 : 0);
-        $strengthPlus = ($this->strength > $anotherCat->strength ? 1 : 0);
-        $count = $agePlus + $weightPlus + $strengthPlus;
-        return $result = ($count>=2 ? 1 : 0);
+        
+            $ageMin = ($this->age = $anotherCat->age ? 1 : 0);
+            $weightMin = ($this->weight = $anotherCat->weight ? 1 : 0);
+            $strengthMin = ($this->strength = $anotherCat->strength ? 1 : 0);
+            $countMin = $ageMin + $weightMin + $strengthMin;
+
+            $agePlus = ($this->age > $anotherCat->age ? 1 : 0);
+            $weightPlus = ($this->weight > $anotherCat->weight ? 1 : 0);
+            $strengthPlus = ($this->strength > $anotherCat->strength ? 1 : 0);
+            $count = $agePlus + $weightPlus + $strengthPlus;
+            $res = ($count>=2 ? 1 : 0);
+            
+            if ($countMin = 3){
+                $result = "Paritet!";
+            }else {$result = ($res ? "Cat1 win!":"Cat2 win!");}
+        
     }
 }
 
@@ -23,9 +34,10 @@ $Cat1->age=3;
 $Cat1->weight=6;
 $Cat1->strength=10;
 $Cat2 = new Cat();
-$Cat2->age=4;
-$Cat2->weight=5;
-$Cat2->strength=8;
+$Cat2->age=3;
+$Cat2->weight=6;
+$Cat2->strength=10;
 $Cat1->fight($Cat2);
-echo $result ? "Cat1 win!":"Cat2 win!";
+$ren = $Cat1->fight($Cat2);
+echo $result;
 ?>
