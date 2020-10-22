@@ -22,7 +22,7 @@ class Cat {
             
             if ($countMin == 3){
                 $result = "C1 true, C2 false!";
-            }else {$result = ($count>=2 ? ($this->name . "won!") :$this->name . "lost!");}
+            }else {$result = ($count>=2 ? ($this->name . " won!") :$this->name . " lost!");}
             return $result;
     }
 }
